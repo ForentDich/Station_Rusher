@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck5ktncp3rde4"]
+
+[ext_resource type="AudioStream" uid="uid://h206q1lpntxo" path="res://Assets/Sound/Station_rusher_OST_1.mp3" id="1_bt1ob"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_bt1ob")
+autoplay = true
+bus = &"Music"

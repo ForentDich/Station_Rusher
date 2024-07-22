@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpffhhckwjml4"]
+
+[ext_resource type="Script" path="res://Generation/Rooms/Scripts/shutter_factory.gd" id="1_5dr17"]
+[ext_resource type="TileSet" uid="uid://cqjb5b50o78hy" path="res://Generation/world.tres" id="2_hac1w"]
+
+[node name="shutter_factory" type="Node"]
+script = ExtResource("1_5dr17")
+
+[node name="shutter_vertical" type="Node2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="shutter_vertical"]
+position = Vector2(-16, 0)
+tile_set = ExtResource("2_hac1w")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 1, -65536, 131072, 0, -131072, 131072, 0, -196608, 131072, 0, -262144, 131072, 0, -327680, 0, 0, 65536, 65536, 196610)
+
+[node name="shutter_horizontal" type="Node2D" parent="."]
+position = Vector2(320, 0)
+
+[node name="TileMap" type="TileMap" parent="shutter_horizontal"]
+position = Vector2(0, -16)
+tile_set = ExtResource("2_hac1w")
+format = 2
+layer_0/tile_data = PackedInt32Array(-2, 0, 131074, -1, 0, 131074, -65536, 0, 131074, -65535, 0, 131074, -65539, 0, 0, -131070, 65536, 0, -65538, 131072, 1, -65537, 131072, 1, -131072, 131072, 1, -131071, 131072, 1)

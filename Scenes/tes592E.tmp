@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcel4owevt0pc"]
+
+[ext_resource type="PackedScene" uid="uid://sprx7rrlx4ht" path="res://Scenes/weapon.tscn" id="1_x7dy2"]
+
+[node name="TEST" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Weapon" parent="." instance=ExtResource("1_x7dy2")]

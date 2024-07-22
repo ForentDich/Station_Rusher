@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://hkds0gy8qkuo"]
+
+[ext_resource type="Texture2D" uid="uid://cy431d1vvlfad" path="res://Assets/Sprites/Weapons/ranged_3.png" id="1_0pnro"]
+[ext_resource type="Script" path="res://Interface/InventoryItem.gd" id="2_m25se"]
+
+[node name="InventoryItem" type="TextureRect"]
+custom_minimum_size = Vector2(48, 48)
+offset_right = 48.0
+offset_bottom = 48.0
+texture = ExtResource("1_0pnro")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("2_m25se")

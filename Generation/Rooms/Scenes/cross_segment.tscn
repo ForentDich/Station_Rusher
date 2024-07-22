@@ -1,0 +1,189 @@
+[gd_scene load_steps=14 format=3 uid="uid://bb2hjyg3tv3gw"]
+
+[ext_resource type="Script" path="res://Generation/Rooms/Scripts/corridor_cross.gd" id="1_7r2lw"]
+[ext_resource type="TileSet" uid="uid://cqjb5b50o78hy" path="res://Generation/world.tres" id="2_80qyd"]
+[ext_resource type="Texture2D" uid="uid://d4coh48jn31jh" path="res://Assets/Sprites/Effects/light.png" id="3_61y2l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2xsc"]
+size = Vector2(512, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71o7a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kolgl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ae3bs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rpxp"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_fgr2s"]
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sxh2b"]
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mbq3p"]
+b = Vector2(0, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cinet"]
+b = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w78p3"]
+size = Vector2(192, 192)
+
+[node name="Cross_segment" type="Node2D"]
+z_index = -1
+script = ExtResource("1_7r2lw")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1, 1)
+scale = Vector2(2.82227, 2.82227)
+blend_mode = 2
+texture = ExtResource("3_61y2l")
+texture_scale = 0.5
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("RectangleShape2D_g2xsc")
+debug_color = Color(0.996078, 0.0392157, 0, 0)
+
+[node name="TileMapFloor" type="TileMap" parent="."]
+z_index = -1
+position = Vector2(-128, 128)
+tile_set = ExtResource("2_80qyd")
+format = 2
+layer_0/name = "floor"
+layer_0/tile_data = PackedInt32Array(-458751, 262144, 1, -393215, 262144, 0, -327679, 262144, 0, -262143, 262144, 0, -196607, 262144, 0, -131071, 262144, 2, -458750, 196608, 1, -393214, 393216, 0, -327678, 393216, 1, -262142, 393216, 1, -196606, 393216, 2, -131070, 196608, 2, -458749, 196608, 1, -393213, 458752, 0, -327677, 458752, 1, -262141, 458752, 1, -196605, 458752, 2, -131069, 196608, 2, -458748, 196608, 1, -393212, 458752, 0, -327676, 458752, 1, -262140, 458752, 1, -196604, 458752, 2, -131068, 196608, 2, -458747, 196608, 1, -393211, 524288, 0, -327675, 524288, 1, -262139, 524288, 1, -196603, 524288, 2, -131067, 196608, 2, -458746, 327680, 1, -393210, 262144, 268435456, -327674, 262144, 268435456, -262138, 262144, 268435456, -196602, 262144, 268435456, -131066, 327680, 2, -327673, 327680, 0, -262137, 327680, 0, -65532, 327680, 0, -65533, 327680, 0, -327680, 327680, 0, -262144, 327680, 0, -524285, 327680, 0, -524284, 327680, 0, -196608, 262144, 1879048192, -131072, 196608, 131072, -65536, 196608, 65536, -65535, 327680, 0, -65534, 262144, 0, -393216, 262144, 1342177280, -458752, 196608, 65536, -524288, 196608, 65536, -524287, 327680, 0, -524286, 262144, 0, -524283, 262144, 268435456, -524282, 327680, 0, -524281, 196608, 65536, -458745, 196608, 65536, -393209, 262144, 1342177280, -196601, 262144, 1879048192, -131065, 196608, 131072, -65529, 196608, 65536, -65530, 327680, 0, -65531, 262144, 268435456)
+
+[node name="TileMapWall" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("2_80qyd")
+format = 2
+layer_0/name = "wall"
+layer_0/y_sort_enabled = true
+layer_1/name = "wall_up_0"
+layer_1/enabled = false
+layer_1/y_sort_enabled = true
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array(-262147, 0, 2, -262146, 0, 6, -262145, 65536, 6, -327680, 65536, 6, -327679, 131072, 6, -327678, 0, 2, -327683, 131072, 1, -327682, 131072, 1, -327681, 131072, 1, -393216, 131072, 1, -393215, 131072, 1, -393214, 131072, 1)
+layer_2/name = "wall_up_1"
+layer_2/enabled = false
+layer_2/y_sort_enabled = true
+layer_2/tile_data = PackedInt32Array(-262147, 196608, 6, -327678, 196608, 6, -327683, 65536, 1, -393214, 0, 1)
+layer_3/name = "wall_down_0"
+layer_3/enabled = false
+layer_3/y_sort_enabled = true
+layer_3/tile_data = PackedInt32Array(131069, 131072, 1, 131070, 131072, 1, 131071, 131072, 1, 65536, 131072, 1, 65537, 131072, 1, 65538, 131072, 1, 196605, 65536, 2, 196606, 0, 4, 196607, 65536, 4, 131072, 65536, 4, 131073, 131072, 4, 131074, 65536, 2)
+layer_4/name = "wall_down_1"
+layer_4/enabled = false
+layer_4/tile_data = PackedInt32Array(131069, 65536, 0, 196605, 131072, 65536, 262141, 131072, 0, 65538, 0, 0, 131074, 131072, 65536, 196610, 131072, 0)
+layer_5/name = "wall_left_0"
+layer_5/enabled = false
+layer_5/y_sort_enabled = true
+layer_5/tile_data = PackedInt32Array(131068, 0, 1, 65532, 131072, 0, -4, 131072, 0, -65540, 131072, 0, -131076, 131072, 0, -262148, 131072, 0, -327684, 0, 0, -196612, 131072, 0, 196604, 65536, 196610)
+layer_6/name = "wall_left_1"
+layer_6/enabled = false
+layer_6/y_sort_enabled = true
+layer_6/tile_data = PackedInt32Array(196604, 65536, 131074, 131068, 0, 1, 65532, 65536, 0, -196612, 0, 131074, -327684, 0, 0, -262148, 65536, 1)
+layer_7/name = "wall_right_0"
+layer_7/enabled = false
+layer_7/y_sort_enabled = true
+layer_7/tile_data = PackedInt32Array(65539, 65536, 1, 3, 131072, 0, -65533, 131072, 0, -131069, 131072, 0, -196605, 131072, 0, -262141, 131072, 0, -327677, 131072, 0, -393213, 65536, 0, 131075, 65536, 196610)
+layer_8/name = "wall_right_1"
+layer_8/enabled = false
+layer_8/y_sort_enabled = true
+layer_8/tile_data = PackedInt32Array(131075, 65536, 131074, 65539, 65536, 1, 3, 0, 0, -393213, 65536, 0, -327677, 0, 1, -262141, 0, 131074)
+
+[node name="SimpleArea2D" type="Node2D" parent="."]
+
+[node name="LEFT" type="Area2D" parent="SimpleArea2D"]
+position = Vector2(-128, 0)
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleArea2D/LEFT"]
+shape = SubResource("RectangleShape2D_71o7a")
+
+[node name="UP" type="Area2D" parent="SimpleArea2D"]
+position = Vector2(0, -128)
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleArea2D/UP"]
+shape = SubResource("RectangleShape2D_kolgl")
+
+[node name="RIGHT" type="Area2D" parent="SimpleArea2D"]
+position = Vector2(128, 0)
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleArea2D/RIGHT"]
+shape = SubResource("RectangleShape2D_ae3bs")
+
+[node name="DOWN" type="Area2D" parent="SimpleArea2D"]
+position = Vector2(0, 128)
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleArea2D/DOWN"]
+shape = SubResource("RectangleShape2D_0rpxp")
+
+[node name="CheckerArea2D" type="Node2D" parent="."]
+z_index = 1
+
+[node name="UP" type="Area2D" parent="CheckerArea2D"]
+position = Vector2(0, -128)
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckerArea2D/UP"]
+shape = SubResource("SegmentShape2D_fgr2s")
+debug_color = Color(0.968627, 0.176471, 0, 0.419608)
+
+[node name="DOWN" type="Area2D" parent="CheckerArea2D"]
+position = Vector2(0, 128)
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckerArea2D/DOWN"]
+shape = SubResource("SegmentShape2D_sxh2b")
+debug_color = Color(0.968627, 0.176471, 0, 0.419608)
+
+[node name="RIGHT" type="Area2D" parent="CheckerArea2D"]
+position = Vector2(128, 0)
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckerArea2D/RIGHT"]
+shape = SubResource("SegmentShape2D_mbq3p")
+debug_color = Color(0.968627, 0.176471, 0, 0.419608)
+
+[node name="LEFT" type="Area2D" parent="CheckerArea2D"]
+position = Vector2(-128, 0)
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckerArea2D/LEFT"]
+shape = SubResource("SegmentShape2D_cinet")
+debug_color = Color(0.968627, 0.176471, 0, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_w78p3")
+debug_color = Color(0.858824, 0.352941, 0.239216, 0.2)
+
+[node name="EnemiesArea" type="ReferenceRect" parent="."]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+
+[connection signal="area_entered" from="CheckerArea2D/UP" to="." method="_on_up_area_entered"]
+[connection signal="area_entered" from="CheckerArea2D/DOWN" to="." method="_on_down_area_entered"]
+[connection signal="area_entered" from="CheckerArea2D/RIGHT" to="." method="_on_right_area_entered"]
+[connection signal="area_entered" from="CheckerArea2D/LEFT" to="." method="_on_left_area_entered"]

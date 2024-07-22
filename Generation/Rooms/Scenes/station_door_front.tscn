@@ -1,0 +1,141 @@
+[gd_scene load_steps=10 format=3 uid="uid://drnhsslq6l1xt"]
+
+[ext_resource type="Script" path="res://Generation/Rooms/Scripts/station_door.gd" id="1_m5tfu"]
+[ext_resource type="Texture2D" uid="uid://dn3pu6uwuvtr5" path="res://Generation/Sprites/station_door_front_0.png" id="2_0wt4l"]
+[ext_resource type="AudioStream" uid="uid://sf15774670u3" path="res://Assets/Sound/doorstop1.wav" id="3_v5kql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1l8y4"]
+size = Vector2(64, 6.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wo0cn"]
+size = Vector2(54, 42)
+
+[sub_resource type="Animation" id="Animation_jfj17"]
+resource_name = "Lock"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qii27"]
+resource_name = "Open"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 0.22, 0.24, 0.26, 0.28, 0.3, 0.32, 0.34, 0.36, 0.38),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.29, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_np2ft"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StaticBody2D/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hrdmr"]
+_data = {
+"Lock": SubResource("Animation_jfj17"),
+"Open": SubResource("Animation_qii27"),
+"RESET": SubResource("Animation_np2ft")
+}
+
+[node name="StationDoorFront" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_m5tfu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -16)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+z_index = 2
+y_sort_enabled = true
+position = Vector2(0, -16)
+texture = ExtResource("2_0wt4l")
+hframes = 20
+vframes = 2
+
+[node name="Collision" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 12.75)
+shape = SubResource("RectangleShape2D_1l8y4")
+
+[node name="PlayerDetector" type="Area2D" parent="StaticBody2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/PlayerDetector"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_wo0cn")
+debug_color = Color(0, 0.647059, 0.180392, 0.0627451)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hrdmr")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v5kql")
+
+[connection signal="body_entered" from="StaticBody2D/PlayerDetector" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="StaticBody2D/PlayerDetector" to="." method="_on_area_2d_body_exited"]

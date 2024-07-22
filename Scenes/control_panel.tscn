@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://takqmjn0rf7f"]
+
+[ext_resource type="Texture2D" uid="uid://0v1y68ekmpi7" path="res://Assets/Sprites/Object/control_panel_01.png" id="1_skcb0"]
+[ext_resource type="Script" path="res://Scenes/control_panel.gd" id="1_tdq8v"]
+[ext_resource type="Shader" path="res://Assets/Shaders/OutlineShader.gdshader" id="2_4xdu7"]
+[ext_resource type="PackedScene" uid="uid://c3oguatthq8l8" path="res://Interaction/interaction_area.tscn" id="3_b2yg6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_moxnh"]
+shader = ExtResource("2_4xdu7")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/on = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmdux"]
+size = Vector2(24, 59)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4t6yk"]
+radius = 49.2544
+
+[node name="ControlPanel" type="StaticBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_tdq8v")
+path = "res://world.tscn"
+action_name = "Отправиться на станцию"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_moxnh")
+texture = ExtResource("1_skcb0")
+offset = Vector2(0, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.25)
+shape = SubResource("RectangleShape2D_rmdux")
+
+[node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_for_shader") instance=ExtResource("3_b2yg6")]
+sprite_for_shader = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_4t6yk")

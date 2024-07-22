@@ -1,0 +1,106 @@
+[gd_scene load_steps=13 format=3 uid="uid://d2s74c76174wh"]
+
+[ext_resource type="Script" path="res://Scenes/cat.gd" id="1_5rqr8"]
+[ext_resource type="Texture2D" uid="uid://ieuwb83len7q" path="res://Assets/Sprites/Object/meow_010.png" id="1_t6nkl"]
+[ext_resource type="Shader" path="res://Assets/Shaders/OutlineShader.gdshader" id="2_66x7w"]
+[ext_resource type="PackedScene" uid="uid://c3oguatthq8l8" path="res://Interaction/interaction_area.tscn" id="2_uroye"]
+[ext_resource type="AudioStream" uid="uid://dj4wf00r6dkox" path="res://Assets/Sound/mineMeow.mp3" id="5_8inn4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4csj"]
+size = Vector2(18, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tua7o"]
+shader = ExtResource("2_66x7w")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/on = false
+
+[sub_resource type="Animation" id="Animation_jho0p"]
+resource_name = "Idle"
+length = 1.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_igcg8"]
+resource_name = "Love"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.8, 1.2, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [6, 7, 8, 9, 10, 11, 0]
+}
+
+[sub_resource type="Animation" id="Animation_n80iw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3obdc"]
+_data = {
+"Idle": SubResource("Animation_jho0p"),
+"Love": SubResource("Animation_igcg8"),
+"RESET": SubResource("Animation_n80iw")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gtoew"]
+radius = 63.0079
+
+[node name="Cat" type="StaticBody2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_5rqr8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.5)
+shape = SubResource("RectangleShape2D_n4csj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_tua7o")
+texture = ExtResource("1_t6nkl")
+hframes = 12
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_3obdc")
+}
+autoplay = "Idle"
+
+[node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_for_shader") instance=ExtResource("2_uroye")]
+action_name = "Погладить"
+sprite_for_shader = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_gtoew")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_8inn4")
+bus = &"Sound"

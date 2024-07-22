@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4yari5fka7wk"]
+
+[ext_resource type="PackedScene" uid="uid://sprx7rrlx4ht" path="res://Scenes/weapon.tscn" id="1_7vpa6"]
+[ext_resource type="Resource" uid="uid://bng1c8yuhdf1j" path="res://Resources/Items/weapon_1.tres" id="2_h3r64"]
+[ext_resource type="Shader" path="res://Assets/Shaders/OutlineShader.gdshader" id="3_gdcup"]
+[ext_resource type="Texture2D" uid="uid://cy431d1vvlfad" path="res://Assets/Sprites/Weapons/ranged_3.png" id="3_ouvlb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsuim"]
+resource_local_to_scene = true
+shader = ExtResource("3_gdcup")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/on = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_51l5f"]
+radius = 55.0
+
+[node name="StartShootgun" instance=ExtResource("1_7vpa6")]
+weapon_data = ExtResource("2_h3r64")
+
+[node name="WeaponSprite" parent="Base" index="0"]
+material = SubResource("ShaderMaterial_lsuim")
+texture = ExtResource("3_ouvlb")
+offset = Vector2(9, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+position = Vector2(6.25, -2.5)
+shape = SubResource("CircleShape2D_51l5f")

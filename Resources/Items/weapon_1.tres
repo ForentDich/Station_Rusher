@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://bng1c8yuhdf1j"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon_resource.gd" id="1_6de7p"]
+
+[resource]
+script = ExtResource("1_6de7p")
+id = "weapon_1"
+weapon_name = "Дробаш"
+rarity = 0
+accuracy = 1.0
+magazine_size = 2
+is_infinite_ammo_capacity = false
+ammo_capacity = 24
+damage = 2
+knockback = 1
+camera_shake = 1
+fire_rate = 1.2
+reload_time = 2.0
+bullet_speed = 400.0
+bullet_number = 5
+bullet_max_angle = 0.261799
+bullet_range = 100.0

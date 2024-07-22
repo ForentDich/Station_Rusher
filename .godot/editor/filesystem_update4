@@ -1,0 +1,13 @@
+res://Generation/Rooms/Scenes/start_room.tscn
+res://Assets/Shaders/hit_flash.tres
+res://Generation/world.tres
+res://Assets/Shaders/OutlineShader.gdshader
+res://Assets/Shaders/Dissapear.gdshader
+res://Interface/Blur.gdshader
+res://Assets/Shaders/Wall.gdshader
+res://Assets/Shaders/scene_transistor.gdshader
+res://ship.tscn
+res://Scenes/cat.tscn
+res://Generation/Rooms/Scenes/station_door_front.tscn
+res://Scenes/player.tscn
+res://world.tscn

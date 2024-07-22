@@ -1,0 +1,452 @@
+[gd_scene load_steps=11 format=3 uid="uid://csdtjbuk25ce1"]
+
+[ext_resource type="Theme" uid="uid://c3g0j1v0w7yax" path="res://Assets/Themes/defalut_theme.tres" id="1_b2s5h"]
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_dvntm"]
+[ext_resource type="Shader" path="res://Interface/Blur.gdshader" id="1_j1m80"]
+[ext_resource type="Script" path="res://Scripts/Graphics.gd" id="4_bme0s"]
+[ext_resource type="Script" path="res://Scripts/Audio.gd" id="5_ujdi2"]
+[ext_resource type="PackedScene" uid="uid://bpbae6tniwkix" path="res://Interface/action_button.tscn" id="6_yj2kv"]
+[ext_resource type="Script" path="res://Back3.gd" id="7_jgr20"]
+[ext_resource type="Script" path="res://Scripts/Saves.gd" id="8_un02c"]
+[ext_resource type="Script" path="res://Back44.gd" id="9_uq4rl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2gjho"]
+shader = ExtResource("1_j1m80")
+shader_parameter/value = 1.5
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 2
+layer = 2
+script = ExtResource("1_dvntm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_2gjho")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_b2s5h")
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="MainMenu" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Resume" type="Button" parent="MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "Продолжить
+"
+flat = true
+
+[node name="Save" type="Button" parent="MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "Сохранения"
+flat = true
+
+[node name="Settings" type="Button" parent="MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "Настройки"
+flat = true
+
+[node name="Quit" type="Button" parent="MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "Выйти"
+flat = true
+
+[node name="Settings" type="MarginContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="SettingsTab" type="TabContainer" parent="MarginContainer/Settings"]
+layout_mode = 2
+
+[node name="Графика" type="TabBar" parent="MarginContainer/Settings/SettingsTab"]
+layout_mode = 2
+script = ExtResource("4_bme0s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Settings/SettingsTab/Графика"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -226.5
+offset_top = -36.0
+offset_right = 226.5
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Settings/SettingsTab/Графика/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Resolution" type="Label" parent="MarginContainer/Settings/SettingsTab/Графика/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Разрешение"
+
+[node name="ScreenType" type="Label" parent="MarginContainer/Settings/SettingsTab/Графика/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Режим отображения"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Settings/SettingsTab/Графика/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="OptionResolution" type="OptionButton" parent="MarginContainer/Settings/SettingsTab/Графика/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 7
+item_count = 4
+selected = 0
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1366x768"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
+
+[node name="OptionWindow" type="OptionButton" parent="MarginContainer/Settings/SettingsTab/Графика/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 7
+item_count = 2
+selected = 0
+popup/item_0/text = "Полноэкранный"
+popup/item_0/id = 0
+popup/item_1/text = "Оконный"
+popup/item_1/id = 1
+
+[node name="Звук" type="TabBar" parent="MarginContainer/Settings/SettingsTab"]
+visible = false
+layout_mode = 2
+script = ExtResource("5_ujdi2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Settings/SettingsTab/Звук"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="Master" type="Label" parent="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Общий"
+
+[node name="Sound" type="Label" parent="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Звуки"
+
+[node name="Music" type="Label" parent="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Музыка"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Master" type="HSlider" parent="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Sound" type="HSlider" parent="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Music" type="HSlider" parent="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="Управление" type="TabBar" parent="MarginContainer/Settings/SettingsTab"]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Settings/SettingsTab/Управление"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -93.0
+offset_right = 203.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 48
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Up" type="Label" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Вверх"
+
+[node name="Down" type="Label" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Вниз"
+
+[node name="Left" type="Label" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Влево"
+
+[node name="Right" type="Label" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Вправо"
+
+[node name="Use" type="Label" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Использовать"
+
+[node name="Switch" type="Label" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+text = "Сменить оружие"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer"]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+
+[node name="ActionButton" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer2" instance=ExtResource("6_yj2kv")]
+layout_mode = 2
+size_flags_vertical = 6
+action = "move_up"
+
+[node name="ActionButton2" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer2" instance=ExtResource("6_yj2kv")]
+layout_mode = 2
+size_flags_vertical = 6
+action = "move_down"
+
+[node name="ActionButton3" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer2" instance=ExtResource("6_yj2kv")]
+layout_mode = 2
+size_flags_vertical = 6
+action = "move_left"
+
+[node name="ActionButton4" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer2" instance=ExtResource("6_yj2kv")]
+layout_mode = 2
+size_flags_vertical = 6
+action = "move_right"
+
+[node name="ActionButton5" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer2" instance=ExtResource("6_yj2kv")]
+layout_mode = 2
+size_flags_vertical = 6
+action = "interact"
+
+[node name="ActionButton6" parent="MarginContainer/Settings/SettingsTab/Управление/HBoxContainer/VBoxContainer2" instance=ExtResource("6_yj2kv")]
+layout_mode = 2
+size_flags_vertical = 6
+action = "switch_weapon"
+
+[node name="Back" type="Button" parent="MarginContainer/Settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Назад
+"
+flat = true
+script = ExtResource("7_jgr20")
+
+[node name="Saves" type="MarginContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 32
+script = ExtResource("8_un02c")
+
+[node name="Panel" type="Panel" parent="MarginContainer/Saves"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Saves/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -56.0
+offset_right = 212.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Saves/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 28
+
+[node name="Label" type="Label" parent="MarginContainer/Saves/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Слот 1:"
+
+[node name="Label2" type="Label" parent="MarginContainer/Saves/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Слот 2:"
+
+[node name="Label3" type="Label" parent="MarginContainer/Saves/Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Слот 3:"
+
+[node name="VBoxLoad" type="VBoxContainer" parent="MarginContainer/Saves/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ButtonLoad" type="Button" parent="MarginContainer/Saves/Panel/HBoxContainer/VBoxLoad"]
+layout_mode = 2
+text = "Загрузить"
+flat = true
+
+[node name="ButtonLoad2" type="Button" parent="MarginContainer/Saves/Panel/HBoxContainer/VBoxLoad"]
+layout_mode = 2
+text = "Загрузить"
+flat = true
+
+[node name="ButtonLoad3" type="Button" parent="MarginContainer/Saves/Panel/HBoxContainer/VBoxLoad"]
+layout_mode = 2
+text = "Загрузить"
+flat = true
+
+[node name="VBoxClear" type="VBoxContainer" parent="MarginContainer/Saves/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ButtonClear" type="Button" parent="MarginContainer/Saves/Panel/HBoxContainer/VBoxClear"]
+layout_mode = 2
+text = "Очистить"
+flat = true
+
+[node name="ButtonClear2" type="Button" parent="MarginContainer/Saves/Panel/HBoxContainer/VBoxClear"]
+layout_mode = 2
+text = "Очистить"
+flat = true
+
+[node name="ButtonClear3" type="Button" parent="MarginContainer/Saves/Panel/HBoxContainer/VBoxClear"]
+layout_mode = 2
+text = "Очистить"
+flat = true
+
+[node name="Label" type="Label" parent="MarginContainer/Saves/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 8.0
+offset_right = 60.0
+offset_bottom = 24.0
+grow_horizontal = 2
+text = "Сохранения"
+
+[node name="Back" type="Button" parent="MarginContainer/Saves/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = 8.0
+offset_right = 34.0
+offset_bottom = 32.0007
+grow_horizontal = 2
+grow_vertical = 0
+text = "Назад
+"
+script = ExtResource("9_uq4rl")
+
+[connection signal="pressed" from="MarginContainer/MainMenu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/MainMenu/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="MarginContainer/MainMenu/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/MainMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="item_selected" from="MarginContainer/Settings/SettingsTab/Графика/HBoxContainer/VBoxContainer2/OptionResolution" to="MarginContainer/Settings/SettingsTab/Графика" method="_on_option_resolution_item_selected"]
+[connection signal="item_selected" from="MarginContainer/Settings/SettingsTab/Графика/HBoxContainer/VBoxContainer2/OptionWindow" to="MarginContainer/Settings/SettingsTab/Графика" method="_on_option_window_item_selected"]
+[connection signal="value_changed" from="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer/VBoxContainer2/Master" to="MarginContainer/Settings/SettingsTab/Звук" method="_on_master_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer/VBoxContainer2/Sound" to="MarginContainer/Settings/SettingsTab/Звук" method="_on_sound_value_changed"]
+[connection signal="value_changed" from="MarginContainer/Settings/SettingsTab/Звук/HBoxContainer/VBoxContainer2/Music" to="MarginContainer/Settings/SettingsTab/Звук" method="_on_music_value_changed"]
+[connection signal="pressed" from="MarginContainer/Settings/Back" to="MarginContainer/Settings/Back" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Saves/Panel/HBoxContainer/VBoxLoad/ButtonLoad" to="MarginContainer/Saves" method="_on_button_load_pressed"]
+[connection signal="pressed" from="MarginContainer/Saves/Panel/HBoxContainer/VBoxLoad/ButtonLoad2" to="MarginContainer/Saves" method="_on_button_load_2_pressed"]
+[connection signal="pressed" from="MarginContainer/Saves/Panel/HBoxContainer/VBoxLoad/ButtonLoad3" to="MarginContainer/Saves" method="_on_button_load_3_pressed"]
+[connection signal="pressed" from="MarginContainer/Saves/Panel/HBoxContainer/VBoxClear/ButtonClear" to="MarginContainer/Saves" method="_on_button_clear_pressed"]
+[connection signal="pressed" from="MarginContainer/Saves/Panel/HBoxContainer/VBoxClear/ButtonClear2" to="MarginContainer/Saves" method="_on_button_clear_2_pressed"]
+[connection signal="pressed" from="MarginContainer/Saves/Panel/HBoxContainer/VBoxClear/ButtonClear3" to="MarginContainer/Saves" method="_on_button_clear_3_pressed"]
+[connection signal="pressed" from="MarginContainer/Saves/Panel/Back" to="MarginContainer/Saves/Panel/Back" method="_on_pressed"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://b03jgigodvyur"]
+
+[ext_resource type="Script" path="res://Scenes/statistic_panel.gd" id="1_d1ebe"]
+[ext_resource type="Shader" path="res://Assets/Shaders/OutlineShader.gdshader" id="1_luf0j"]
+[ext_resource type="Texture2D" uid="uid://ccajyjhxxlmh8" path="res://Assets/Sprites/Object/stats_panel_01.png" id="1_mvyrn"]
+[ext_resource type="PackedScene" uid="uid://c3oguatthq8l8" path="res://Interaction/interaction_area.tscn" id="2_ldojo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvw61"]
+size = Vector2(60, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7l44t"]
+shader = ExtResource("1_luf0j")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/on = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xdgs6"]
+radius = 56.0357
+
+[node name="statistic_panel" type="StaticBody2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_d1ebe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_cvw61")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7l44t")
+texture = ExtResource("1_mvyrn")
+
+[node name="InteractionArea" parent="." node_paths=PackedStringArray("sprite_for_shader") instance=ExtResource("2_ldojo")]
+action_name = "Статистика"
+sprite_for_shader = NodePath("../Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_xdgs6")
+
+[connection signal="body_exited" from="InteractionArea" to="." method="_on_interaction_area_body_exited"]

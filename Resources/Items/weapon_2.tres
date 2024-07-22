@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://75klicarn313"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon_resource.gd" id="1_u42cp"]
+
+[resource]
+script = ExtResource("1_u42cp")
+id = "weapon_2"
+weapon_name = "Базовый ПМ"
+rarity = "КАЛЛ"
+accuracy = 1.0
+magazine_size = 12
+is_infinite_ammo_capacity = false
+ammo_capacity = 96
+damage = 1
+knockback = 0
+camera_shake = 0
+fire_rate = 0.2
+reload_time = 2.0
+bullet_speed = 500.0
+bullet_number = 1
+bullet_max_angle = 0.0
+bullet_range = 0.0

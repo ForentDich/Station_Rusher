@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://by01k7h65l7xb"]
+
+[ext_resource type="PackedScene" uid="uid://sprx7rrlx4ht" path="res://Scenes/weapon.tscn" id="1_vjtpi"]
+[ext_resource type="Texture2D" uid="uid://dl7vi8yddfm20" path="res://Assets/Sprites/Weapons/start_pistol.png" id="2_foeea"]
+[ext_resource type="Resource" uid="uid://dprvpspvh2gpi" path="res://Resources/Items/pistol_0.tres" id="2_khlnd"]
+[ext_resource type="Shader" path="res://Assets/Shaders/OutlineShader.gdshader" id="3_7023r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qm3ce"]
+resource_local_to_scene = true
+shader = ExtResource("3_7023r")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/on = false
+
+[node name="StartPistol" instance=ExtResource("1_vjtpi")]
+scale = Vector2(0.51, 0.51)
+weapon_data = ExtResource("2_khlnd")
+
+[node name="WeaponSprite" parent="Base" index="0"]
+material = SubResource("ShaderMaterial_qm3ce")
+texture = ExtResource("2_foeea")
+offset = Vector2(6.12, -2.67)
+
+[node name="BarrelOrigin" parent="Base" index="1"]
+position = Vector2(21.5686, -7.84314)

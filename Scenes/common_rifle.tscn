@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://cxc1ddhlso8h2"]
+
+[ext_resource type="PackedScene" uid="uid://sprx7rrlx4ht" path="res://Scenes/weapon.tscn" id="1_v77hy"]
+[ext_resource type="Shader" path="res://Assets/Shaders/OutlineShader.gdshader" id="2_bkjh5"]
+[ext_resource type="Resource" uid="uid://cst2fgre8ukyo" path="res://Scenes/Items/weapon_3.tres" id="2_wdcg2"]
+[ext_resource type="Texture2D" uid="uid://b3gu6an4nx5je" path="res://Assets/Sprites/Weapons/ranged_4.png" id="3_pvvxu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gj2hg"]
+resource_local_to_scene = true
+shader = ExtResource("2_bkjh5")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/on = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_am6j7"]
+radius = 66.25
+
+[node name="CommonRifle" instance=ExtResource("1_v77hy")]
+weapon_data = ExtResource("2_wdcg2")
+
+[node name="WeaponSprite" parent="Base" index="0"]
+material = SubResource("ShaderMaterial_gj2hg")
+texture = ExtResource("3_pvvxu")
+offset = Vector2(9, -1)
+
+[node name="BarrelOrigin" parent="Base" index="1"]
+position = Vector2(31.25, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" index="0"]
+shape = SubResource("CircleShape2D_am6j7")

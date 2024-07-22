@@ -1,0 +1,77 @@
+[gd_scene load_steps=7 format=3 uid="uid://dawvslehxvmbp"]
+
+[ext_resource type="TileSet" uid="uid://cqjb5b50o78hy" path="res://Generation/world.tres" id="1_6bbkc"]
+[ext_resource type="Script" path="res://Generation/Rooms/Scripts/entrance_factory.gd" id="1_8afw8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvtl2"]
+size = Vector2(80, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4fa3"]
+size = Vector2(208, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sp4e2"]
+size = Vector2(64, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgj57"]
+size = Vector2(10, 208)
+
+[node name="entrance_factory" type="Node"]
+script = ExtResource("1_8afw8")
+
+[node name="entrance_horizontal" type="Node2D" parent="."]
+z_index = -2
+
+[node name="TileMap" type="TileMap" parent="entrance_horizontal"]
+tile_set = ExtResource("1_6bbkc")
+format = 2
+layer_0/name = "floor"
+layer_0/tile_data = PackedInt32Array(-1, 196608, 1, 65535, 196608, 2, 0, 196608, 2, -65536, 196608, 1, -65535, 327680, 1, 1, 327680, 2, -2, 262144, 1, 65534, 262144, 2, 131070, 196608, 65536, 131071, 196608, 65536, 65536, 196608, 65536, 65537, 196608, 65536, -65538, 196608, 65536, -65537, 196608, 65536, -131072, 196608, 65536, -131071, 196608, 65536)
+layer_1/name = "wall"
+layer_1/tile_data = PackedInt32Array(-196610, 131072, 1, -196609, 131072, 1, -262144, 131072, 1, -262143, 131072, 1, -131074, 196608, 6, -131073, 0, 2, -196608, 0, 2, -196607, 196608, 6)
+layer_2/name = "wall2"
+layer_2/z_index = 5
+layer_2/tile_data = PackedInt32Array(-2, 131072, 1, -1, 131072, 1, -65536, 131072, 1, -65535, 131072, 1, 65534, 196608, 4, 1, 196608, 4, 65535, 65536, 2, 0, 65536, 2)
+
+[node name="CheckArea2D" type="Area2D" parent="entrance_horizontal"]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entrance_horizontal/CheckArea2D"]
+shape = SubResource("RectangleShape2D_jvtl2")
+debug_color = Color(0.968627, 0.176471, 0, 0.0862745)
+
+[node name="CheckRoomArea2D" type="Area2D" parent="entrance_horizontal"]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entrance_horizontal/CheckRoomArea2D"]
+shape = SubResource("RectangleShape2D_x4fa3")
+debug_color = Color(0.12549, 0.647059, 0.0431373, 0)
+
+[node name="entrance_vertical" type="Node2D" parent="."]
+z_index = -2
+position = Vector2(512, 0)
+
+[node name="TileMap" type="TileMap" parent="entrance_vertical"]
+tile_set = ExtResource("1_6bbkc")
+format = 2
+layer_0/name = "floor"
+layer_0/tile_data = PackedInt32Array(-1, 262144, 0, 65535, 262144, 0, 0, 262144, 268435456, -65536, 262144, 268435456, 131071, 262144, 2, 65536, 327680, 2, -65537, 262144, 1, -131072, 327680, 1, -65538, 196608, 65536, -2, 196608, 65536, 65534, 196608, 65536, 131070, 196608, 65536, -131071, 196608, 65536, -65535, 196608, 65536, 1, 196608, 65536, 65537, 196608, 65536)
+layer_1/name = "wall"
+layer_1/tile_data = PackedInt32Array(-2, 131072, 0, 65534, 131072, 0, -65535, 131072, 0, 1, 131072, 0, -131071, 131072, 0, 65537, 131072, 0, -65538, 131072, 0, 131070, 131072, 0)
+
+[node name="CheckArea2D" type="Area2D" parent="entrance_vertical"]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entrance_vertical/CheckArea2D"]
+shape = SubResource("RectangleShape2D_sp4e2")
+debug_color = Color(0.968627, 0.176471, 0, 0.0862745)
+
+[node name="CheckRoomArea2D" type="Area2D" parent="entrance_vertical"]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="entrance_vertical/CheckRoomArea2D"]
+shape = SubResource("RectangleShape2D_qgj57")
+debug_color = Color(0.12549, 0.647059, 0.0431373, 0)

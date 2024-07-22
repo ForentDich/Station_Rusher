@@ -1,0 +1,17 @@
+C:\Godot\Station Rusher\.godot\mono\temp\bin\Debug\Station Rusher.deps.json
+C:\Godot\Station Rusher\.godot\mono\temp\bin\Debug\Station Rusher.runtimeconfig.json
+C:\Godot\Station Rusher\.godot\mono\temp\bin\Debug\Station Rusher.dll
+C:\Godot\Station Rusher\.godot\mono\temp\bin\Debug\Station Rusher.pdb
+C:\Godot\Station Rusher\.godot\mono\temp\bin\Debug\GodotSharp.dll
+C:\Godot\Station Rusher\.godot\mono\temp\bin\Debug\GodotSharpEditor.dll
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\Station Rusher.csproj.AssemblyReference.cache
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\Station Rusher.GeneratedMSBuildEditorConfig.editorconfig
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\Station Rusher.AssemblyInfoInputs.cache
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\Station Rusher.AssemblyInfo.cs
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\Station Rusher.csproj.CoreCompileInputs.cache
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\Station Rusher.csproj.CopyComplete
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\Station Rusher.dll
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\refint\Station Rusher.dll
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\Station Rusher.pdb
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\Station Rusher.genruntimeconfig.cache
+C:\Godot\Station Rusher\.godot\mono\temp\obj\Debug\ref\Station Rusher.dll

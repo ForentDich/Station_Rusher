@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=3 uid="uid://dywceyrsujvox"]
+
+[ext_resource type="Script" path="res://Generation/Rooms/Scripts/world.gd" id="1_46k18"]
+[ext_resource type="PackedScene" uid="uid://clg1ad1qp43p3" path="res://Interface/UI.tscn" id="2_dps74"]
+[ext_resource type="TileSet" uid="uid://cqjb5b50o78hy" path="res://Generation/world.tres" id="2_lffpj"]
+[ext_resource type="PackedScene" uid="uid://csdtjbuk25ce1" path="res://pause_menu.tscn" id="3_xyqfc"]
+[ext_resource type="Texture2D" uid="uid://bdg34csde0xi3" path="res://Generation/Sprites/Blue_Nebula_04-512x512.png" id="7_b31gb"]
+[ext_resource type="PackedScene" uid="uid://cddc7pt2exsir" path="res://Generation/Rooms/Scenes/start_room.tscn" id="7_f7jm5"]
+[ext_resource type="PackedScene" uid="uid://c11dcmcujk3gn" path="res://Scenes/player.tscn" id="8_pqdj4"]
+
+[node name="World" type="Node2D" groups=["CanUI"]]
+script = ExtResource("1_46k18")
+
+[node name="UI" parent="." instance=ExtResource("2_dps74")]
+unique_name_in_owner = true
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_xyqfc")]
+visible = false
+
+[node name="TileMap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("2_lffpj")
+format = 2
+layer_0/y_sort_enabled = true
+metadata/_edit_group_ = true
+
+[node name="start_room" parent="." instance=ExtResource("7_f7jm5")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -101
+follow_viewport_scale = 892.723
+scroll_ignore_camera_zoom = true
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
+offset_left = -124.0
+offset_top = -172.0
+offset_right = 738.0
+offset_bottom = 690.0
+texture = ExtResource("7_b31gb")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.211765, 0.215686, 0.235294, 1)
+
+[node name="Player" parent="." instance=ExtResource("8_pqdj4")]
+z_index = 0
+position = Vector2(-4, -171)

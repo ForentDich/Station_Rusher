@@ -1,0 +1,197 @@
+[gd_scene load_steps=8 format=3 uid="uid://clg1ad1qp43p3"]
+
+[ext_resource type="Script" path="res://Interface/UI.gd" id="1_ctg6f"]
+[ext_resource type="PackedScene" uid="uid://cmnrkrmcqagvk" path="res://Interface/hearts_container.tscn" id="2_jbpq2"]
+[ext_resource type="FontFile" uid="uid://ckuvgn5okcp8q" path="res://Assets/Fonts/Better VCR 6.1.ttf" id="3_l34wn"]
+[ext_resource type="Texture2D" uid="uid://daasn024e1u28" path="res://Assets/Sprites/Interface/slot_main.png" id="4_grahh"]
+[ext_resource type="Texture2D" uid="uid://cw71lmjukqu7n" path="res://Assets/Sprites/Interface/slot.png" id="4_hknfx"]
+[ext_resource type="Theme" uid="uid://c3g0j1v0w7yax" path="res://Assets/Themes/defalut_theme.tres" id="6_hmup2"]
+[ext_resource type="Texture2D" uid="uid://dq28gkxo1mr3j" path="res://Assets/Sprites/Interface/clock.png" id="7_40h3e"]
+
+[node name="UI" type="CanvasLayer" groups=["UI"]]
+script = ExtResource("1_ctg6f")
+
+[node name="HeartsContainer" parent="." instance=ExtResource("2_jbpq2")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = -8.0
+grow_vertical = 0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+
+[node name="LabelAdvice" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -30.0
+offset_right = 104.0
+offset_bottom = -6.99994
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.77, 0.77)
+theme_override_colors/font_outline_color = Color(0, 0.380392, 0.658824, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_l34wn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InventoryBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -60.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Slot_1" type="TextureRect" parent="InventoryBar"]
+layout_mode = 2
+offset_top = 1.0
+offset_right = 64.0
+offset_bottom = 65.0
+scale = Vector2(0.8, 0.8)
+mouse_filter = 2
+texture = ExtResource("4_grahh")
+
+[node name="Slot" type="Marker2D" parent="InventoryBar/Slot_1"]
+position = Vector2(8, 8)
+
+[node name="Slot_2" type="TextureRect" parent="InventoryBar"]
+layout_mode = 2
+offset_left = -34.0
+offset_top = 18.0
+offset_right = 30.0
+offset_bottom = 82.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("4_hknfx")
+
+[node name="Slot" type="Marker2D" parent="InventoryBar/Slot_2"]
+position = Vector2(8, 8)
+
+[node name="Slot_3" type="TextureRect" parent="InventoryBar"]
+layout_mode = 2
+offset_left = -69.0
+offset_top = 18.0
+offset_right = -5.0
+offset_bottom = 82.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("4_hknfx")
+
+[node name="Slot" type="Marker2D" parent="InventoryBar/Slot_3"]
+position = Vector2(8, 8)
+
+[node name="Ammo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.7, 0.7)
+
+[node name="LabelAmmo" type="Label" parent="Ammo"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = -45.7143
+offset_right = 56.0
+offset_bottom = -22.7143
+theme = ExtResource("6_hmup2")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "0/0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 21.0
+offset_top = 32.0
+offset_right = 141.0
+offset_bottom = 56.0
+scale = Vector2(0.85, 0.85)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Timer"]
+layout_mode = 0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 48.0
+offset_bottom = 32.0
+theme_override_constants/separation = 15
+
+[node name="Control" type="Control" parent="Timer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Timer/HBoxContainer/Control"]
+position = Vector2(1, 20)
+scale = Vector2(1.45455, 1.41176)
+texture = ExtResource("7_40h3e")
+
+[node name="Control2" type="Control" parent="Timer/HBoxContainer"]
+layout_mode = 2
+
+[node name="LabelTimer" type="Label" parent="Timer/HBoxContainer/Control2"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 13.0
+offset_right = 89.0
+offset_bottom = 29.0
+theme = ExtResource("6_hmup2")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "0:00"
+vertical_alignment = 1
+
+[node name="Rooms" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -8.0
+offset_right = 40.0
+offset_bottom = 32.0
+scale = Vector2(0.85, 0.85)
+
+[node name="LabelRooms" type="Label" parent="Rooms"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 187.0
+offset_bottom = 39.0
+theme = ExtResource("6_hmup2")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 14
+text = "Комнат: 0/0"
+vertical_alignment = 1
+
+[node name="ReturnLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -94.0
+offset_top = 16.0
+offset_right = 94.0
+offset_bottom = 39.0
+grow_horizontal = 2
+theme = ExtResource("6_hmup2")
+vertical_alignment = 1
